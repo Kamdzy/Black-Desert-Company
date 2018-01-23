@@ -4,7 +4,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:BDCompany"
+                      xmlns:views="clr-namespace:BDCompany.Views"
                       mc:Ignorable="d"
                       Title="MainWindow" Height="350" Width="525"
                       Style="{DynamicResource MyCleanWindowStyle}">
@@ -18,6 +18,19 @@
     </Window.Resources>
 
     <Grid>
-        
+        <Controls:MetroAnimatedSingleRowTabControl x:Name="MainTabControl">
+            <TabItem Header="Home" BorderThickness="0,0,1,0">
+                    <views:Home DataContext="{Binding}" />
+            </TabItem>
+            <TabItem Header="View2" BorderThickness="1,0,1,0">
+                    <views:Home DataContext="{Binding}" />
+            </TabItem>
+            <TabItem Header="View3" BorderThickness="1,0,1,0">
+                    <views:Home DataContext="{Binding}" />
+            </TabItem>
+            <TabItem Header="View4" BorderThickness="1,0,0,0">
+                <views:Home DataContext="{Binding}" />
+            </TabItem>
+        </Controls:MetroAnimatedSingleRowTabControl>
     </Grid>
 </Controls:MetroWindow>
