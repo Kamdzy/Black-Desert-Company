@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using MahApps.Metro;
 using TinyLittleMvvm;
 
-namespace BDCompany.ViewModels.Additions
+namespace BDCompany.ViewModels
 {
-    public class SampleFlyoutViewModel : DialogViewModel
+    public class SettingsFlyoutViewModel : DialogViewModel
     {
+
         private AccentColorMenuData _currentAccentColor;
 
-        public SampleFlyoutViewModel()
+        public SettingsFlyoutViewModel()
         {
             AccentColors = ThemeManager.Accents
                 .Select(a => new AccentColorMenuData

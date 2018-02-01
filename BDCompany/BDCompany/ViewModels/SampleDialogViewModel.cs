@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TinyLittleMvvm;
 
-namespace BDCompany.ViewModels.Additions
+namespace BDCompany.ViewModels
 {
     public class SampleDialogViewModel : DialogViewModel<string>
     {

@@ -7,9 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using BDCompany.ViewModels;
-using BDCompany.ViewModels.Additions;
 using BDCompany.Views;
-using BDCompany.Views.Additions;
 using TinyLittleMvvm;
 
 namespace BDCompany
@@ -29,8 +27,8 @@ namespace BDCompany
             builder.RegisterType<SampleDialogView>().InstancePerDependency().AsSelf();
             builder.RegisterType<SampleDialogViewModel>().InstancePerDependency().AsSelf();
 
-            builder.RegisterType<SampleFlyoutView>().InstancePerDependency().AsSelf();
-            builder.RegisterType<SampleFlyoutViewModel>().InstancePerDependency().AsSelf();
+            builder.RegisterType<SettingsFlyoutView>().InstancePerDependency().AsSelf();
+            builder.RegisterType<SettingsFlyoutViewModel>().InstancePerDependency().AsSelf();
         }
         /*protected override string GetLogFolder()
         {
