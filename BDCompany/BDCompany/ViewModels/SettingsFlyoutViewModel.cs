@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using MahApps.Metro;
+using MahApps.Metro.Controls;
 using TinyLittleMvvm;
 
 namespace BDCompany.ViewModels
@@ -27,6 +29,8 @@ namespace BDCompany.ViewModels
 
             OkCommand = new RelayCommand(OnOk, () => !HasErrors);
             CancelCommand = new RelayCommand(Close);
+            DarkModeCommand = new RelayCommand(OnDarkMode);
+            LightModeCommand = new RelayCommand(OnLightMode);
         }
 
         public List<AccentColorMenuData> AccentColors { get; }
@@ -46,6 +50,10 @@ namespace BDCompany.ViewModels
             }
         }
 
+        public ICommand LightModeCommand { get; }
+
+        public ICommand DarkModeCommand { get; }
+
         public ICommand OkCommand { get; }
 
         public ICommand CancelCommand { get; }
@@ -53,6 +61,30 @@ namespace BDCompany.ViewModels
         private void OnOk()
         {
             Close();
+            Properties.Settings.Default.Save();
+        }
+
+        private void OnDarkMode()
+        {
+            if (Properties.Settings.Default.DarkLightSwitch == true)
+            {
+                var theme = ThemeManager.DetectAppStyle(Application.Current);
+                ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseDark"));
+            }
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void OnLightMode()
+        {
+            if (Properties.Settings.Default.DarkLightSwitch == false)
+            {
+                var theme = ThemeManager.DetectAppStyle(Application.Current);
+                ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseLight"));
+            }
+
+
+            Properties.Settings.Default.Save();
         }
     }
 

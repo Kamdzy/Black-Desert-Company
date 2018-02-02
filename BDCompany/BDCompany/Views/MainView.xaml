@@ -259,10 +259,13 @@
                                                         Command="{Binding ShowSampleDialogCommand}"
                                                         Label="Beer Calculator" ToolTip="Beer Calculator">
                             <controls:HamburgerMenuIconItem.Tag>
-                                <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <tinyLittleMvvm:ViewModelPresenter
-                                        ViewModel="{Binding ShowSampleFlyoutCommand}" />
-                                </Border>
+                                <StackPanel>
+                                    <Border BorderThickness="1,1,0,0"
+                                            BorderBrush="{DynamicResource AccentBaseColorBrush}">
+                                        <tinyLittleMvvm:ViewModelPresenter
+                                            ViewModel="{Binding ShowSampleFlyoutCommand}" />
+                                    </Border>
+                                </StackPanel>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
                     </controls:HamburgerMenuItemCollection>

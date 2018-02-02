@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
 using TinyLittleMvvm;
 
@@ -18,6 +19,12 @@ namespace BDCompany.ViewModels
 
         public MainViewModel(IDialogManager dialogManager, IFlyoutManager flyoutManager)
         {
+            if (Properties.Settings.Default.DarkLightSwitch == true)
+            {
+                var theme = ThemeManager.DetectAppStyle(Application.Current);
+                ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseDark"));
+            }
+
             _dialogManager = dialogManager;
             Flyouts = flyoutManager;
             ShowSampleDialogCommand = new AsyncRelayCommand(OnShowSampleDialogAsync);
