@@ -94,7 +94,7 @@ namespace BDCompany.ViewModels
         }
 
         public static float CurrentCpUusage => _cpuCounter.NextValue();
-
+        
         public ICommand ShowSampleDialogCommand { get; }
 
         public ICommand ShowSampleFlyoutCommand { get; }

@@ -5,6 +5,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       mc:Ignorable="d"
+                      Icon="Logo.ico"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:materialDesignConverters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
@@ -49,22 +50,6 @@
                                Text="{Binding Label}" />
                 </Grid>
             </DataTemplate>
-
-            <ObjectDataProvider x:Key="DisplayModeEnumValues"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type controls:SplitViewDisplayMode}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="controls:SplitViewDisplayMode" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-
-            <ObjectDataProvider x:Key="VisibilityEnumValues"
-                                MethodName="GetValues"
-                                ObjectType="{x:Type Visibility}">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="Visibility" />
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
 
             <materialDesignConverters:BrushRoundConverter x:Key="BrushRoundConverter" />
 
@@ -237,35 +222,28 @@
                 <!--  Items  -->
                 <controls:HamburgerMenu.ItemsSource>
                     <controls:HamburgerMenuItemCollection>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Home}" Label="Home"
-                                                        ToolTip="News">
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Entypo Kind=News}" Label="News" ToolTip="News">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <tinyLittleMvvm:ViewModelPresenter
-                                        ViewModel="{Binding ShowSampleFlyoutCommand}" />
+                                    <views:BeerCalculatorView />
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=AccountCircle}"
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Paper}"
                                                         Label="BDOPlanner" ToolTip="BDOPlanner">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <tinyLittleMvvm:ViewModelPresenter
-                                        ViewModel="{Binding ShowSampleFlyoutCommand}" />
+                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Octicons Kind=Briefcase}"
-                                                        Command="{Binding ShowSampleDialogCommand}"
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Beer}"
                                                         Label="Beer Calculator" ToolTip="Beer Calculator">
                             <controls:HamburgerMenuIconItem.Tag>
-                                <StackPanel>
-                                    <Border BorderThickness="1,1,0,0"
-                                            BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                        <tinyLittleMvvm:ViewModelPresenter
-                                            ViewModel="{Binding ShowSampleFlyoutCommand}" />
-                                    </Border>
-                                </StackPanel>
+                                <Border BorderThickness="1,1,0,0"
+                                        BorderBrush="{DynamicResource AccentBaseColorBrush}">
+                                    <views:BeerCalculatorView />
+                                </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
                     </controls:HamburgerMenuItemCollection>
@@ -274,7 +252,7 @@
                 <!--  Options  -->
                 <controls:HamburgerMenu.OptionsItemsSource>
                     <controls:HamburgerMenuItemCollection>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Settings}" Label="Settings"
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Octicons Kind=Settings}" Label="Settings"
                                                         ToolTip="Settings" Command="{Binding ShowSampleFlyoutCommand}">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
@@ -285,12 +263,12 @@
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=Account}" Label="About"
-                                                        ToolTip="About" Command="{Binding ShowSampleFlyoutCommand}">
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=InformationVariant}"
+                                                        Label="About"
+                                                        ToolTip="About">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <tinyLittleMvvm:ViewModelPresenter
-                                        ViewModel="{Binding ShowSampleFlyoutCommand}" />
+                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>

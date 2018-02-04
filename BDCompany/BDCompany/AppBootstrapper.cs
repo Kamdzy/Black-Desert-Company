@@ -24,26 +24,14 @@ namespace BDCompany
             builder.RegisterType<MainViewModel>();
             builder.RegisterType<MainView>();
 
+            builder.RegisterType<BeerCalculatorViewModel>();
+            builder.RegisterType<BeerCalculatorView>();
+
             builder.RegisterType<SampleDialogView>().InstancePerDependency().AsSelf();
             builder.RegisterType<SampleDialogViewModel>().InstancePerDependency().AsSelf();
 
             builder.RegisterType<SettingsFlyoutView>().InstancePerDependency().AsSelf();
             builder.RegisterType<SettingsFlyoutViewModel>().InstancePerDependency().AsSelf();
         }
-        /*protected override string GetLogFolder()
-        {
-            var logFolder = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                Assembly.GetEntryAssembly().GetName().Name,
-                "Logs");
-
-            if (!Directory.Exists(logFolder))
-            {
-                Directory.CreateDirectory(logFolder);
-            }
-
-            return logFolder;
-        }*/
-
     }
 }
