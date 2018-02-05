@@ -32,13 +32,12 @@
         <Label Grid.Row="3" Content="Grain type" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center"
                FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}"/>
         <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Height="40"
-                  controls:TextBoxHelper.ClearTextButton="True"
+                  controls:TextBoxHelper.ClearTextButton="False"
                   controls:TextBoxHelper.UseFloatingWatermark="True"
                   controls:TextBoxHelper.Watermark="Please select an item..."
                   SelectedIndex="0">
             <ComboBoxItem Content="Item 1" />
             <ComboBoxItem Content="Item 2" />
-            <ComboBoxItem Content="Very long Item 3 for MahApps.Metro" />
             <ComboBoxItem Content="Item 4" />
 
         </ComboBox>
@@ -46,14 +45,13 @@
         <Label Grid.Row="4" Content="Tier type" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center"
                FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}"/>
         <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="40"
-                  controls:TextBoxHelper.ClearTextButton="True"
+                  controls:TextBoxHelper.ClearTextButton="False"
                   controls:TextBoxHelper.UseFloatingWatermark="True"
                   controls:TextBoxHelper.Watermark="Please select an item..."
-                  SelectedIndex="0">
-            <ComboBoxItem Content="Item 1" />
-            <ComboBoxItem Content="Item 2" />
-            <ComboBoxItem Content="Very long Item 3 for MahApps.Metro" />
-            <ComboBoxItem Content="Item 4" />
+                  SelectedIndex="0"
+                  ItemsSource="{Binding List.GrainTypes}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValue="{Binding NodeGrain, Mode=TwoWay}">
 
         </ComboBox>
 

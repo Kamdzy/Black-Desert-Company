@@ -62,7 +62,7 @@
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro">
-      <HintPath>..\..\..\MahApps.Metro\src\MahApps.Metro\MahApps.Metro\obj\Release\NET45\MahApps.Metro.dll</HintPath>
+      <HintPath>D:\Projects\Repos\MahApps.Metro\src\MahApps.Metro\MahApps.Metro\obj\Release\NET45\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro.IconPacks, Version=2.0.0.31, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.2.0.0\lib\net46\MahApps.Metro.IconPacks.dll</HintPath>
@@ -93,7 +93,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="TinyLittleMvvm">
-      <HintPath>..\..\..\TinyLittleMvvm\src\TinyLittleMvvm\bin\Release\TinyLittleMvvm.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\TinyLittleMvvm-develop\src\TinyLittleMvvm\bin\Release\TinyLittleMvvm.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -109,8 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\Grains.cs" />
     <Compile Include="Modulars\CustomHamburgerMenuIconItem.cs" />
     <Compile Include="ViewModels\BeerCalculatorViewModel.cs" />
+    <Compile Include="ViewModels\GrainTypesItemViewModel.cs" />
     <Compile Include="ViewModels\SettingsFlyoutViewModel.cs" />
     <Compile Include="ViewModels\SampleDialogViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -183,8 +185,6 @@
   <ItemGroup>
     <Resource Include="Views\Logo.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
