@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BeerCalculatorView.xaml.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   Interaction logic for BeerCalculatorView.xaml
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace BDCompany.Views
 {
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Interaction logic for BeerCalculatorView.xaml
+    ///     Interaction logic for BeerCalculatorView.xaml
     /// </summary>
     public partial class BeerCalculatorView : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BeerCalculatorView"/> class.
+        /// </summary>
         public BeerCalculatorView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

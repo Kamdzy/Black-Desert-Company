@@ -1,22 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using BDCompany.ViewModels;
-using BDCompany.Views;
-using TinyLittleMvvm;
+﻿
 
 namespace BDCompany
 {
+    using Autofac;
 
-    public interface IShell{}
+    using BDCompany.ViewModels;
+    using BDCompany.Views;
 
-    class AppBootstrapper : BootstrapperBase<MainViewModel>
+    using TinyLittleMvvm;
+
+    /// <summary>
+    /// The Shell interface.
+    /// </summary>
+    public interface IShell
     {
+    }
+
+    /// <inheritdoc />
+    /// <summary>
+    /// The app bootstrapper.
+    /// </summary>
+    internal class AppBootstrapper : BootstrapperBase<MainViewModel>
+    {
+        /// <summary>
+        /// The configure container.
+        /// </summary>
+        /// <param name="builder">
+        /// The builder.
+        /// </param>
         protected override void ConfigureContainer(ContainerBuilder builder)
         {
             base.ConfigureContainer(builder);

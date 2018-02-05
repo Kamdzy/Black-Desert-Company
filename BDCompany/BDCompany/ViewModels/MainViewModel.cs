@@ -1,119 +1,200 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using MahApps.Metro;
-using MahApps.Metro.Controls.Dialogs;
-using TinyLittleMvvm;
-
+﻿
 namespace BDCompany.ViewModels
 {
+    using System;
+    using System.Diagnostics;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Input;
+
+    using BDCompany.Properties;
+
+    using MahApps.Metro;
+    using MahApps.Metro.Controls.Dialogs;
+
+    using TinyLittleMvvm;
+
+    /// <inheritdoc cref="ClassHandlers" />
+    /// <summary>
+    ///     The main view model.
+    /// </summary>
     public class MainViewModel : PropertyChangedBase, IShell, IOnLoadedHandler, ICancelableOnClosingHandler
     {
-        private readonly IDialogManager _dialogManager;
-        private string _title;
-        private static PerformanceCounter _cpuCounter;
-        private bool _cpuThreadActive;
+        /// <summary>
+        ///     The CPU counter.
+        /// </summary>
+        private static PerformanceCounter cpuCounter;
 
+        /// <summary>
+        ///     The _dialog manager.
+        /// </summary>
+        private readonly IDialogManager dialogManager;
+
+        /// <summary>
+        ///     The CPU thread active.
+        /// </summary>
+        private bool cpuThreadActive;
+
+        /// <summary>
+        ///     The _title.
+        /// </summary>
+        private string title;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// </summary>
+        /// <param name="dialogManager">
+        /// The dialog manager.
+        /// </param>
+        /// <param name="flyoutManager">
+        /// The flyout manager.
+        /// </param>
         public MainViewModel(IDialogManager dialogManager, IFlyoutManager flyoutManager)
         {
-            if (Properties.Settings.Default.DarkLightSwitch == true)
+            if (Settings.Default.DarkLightSwitch)
             {
                 var theme = ThemeManager.DetectAppStyle(Application.Current);
                 ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseDark"));
             }
 
-            _dialogManager = dialogManager;
-            Flyouts = flyoutManager;
-            ShowSampleDialogCommand = new AsyncRelayCommand(OnShowSampleDialogAsync);
-            ShowSampleFlyoutCommand = new AsyncRelayCommand(OnShowSampleFlyoutAsync);
+            this.dialogManager = dialogManager;
+            this.Flyouts = flyoutManager;
+            this.ShowSampleDialogCommand = new AsyncRelayCommand(this.OnShowSampleDialogAsync);
+            this.ShowSampleFlyoutCommand = new AsyncRelayCommand(this.OnShowSampleFlyoutAsync);
 
-            _cpuCounter = new PerformanceCounter
-            {
-                CategoryName = "Processor",
-                CounterName = "% Processor Time",
-                InstanceName = "_Total"
-            };
+            cpuCounter = new PerformanceCounter
+                              {
+                                  CategoryName = "Processor",
+                                  CounterName = "% Processor Time",
+                                  InstanceName = "_Total"
+                              };
 
-            _cpuThreadActive = true;
-            Thread th = new Thread(() =>
-            {
-                while (_cpuThreadActive)
-                {
-                    var cpuUsageInt = Convert.ToInt32(CurrentCpUusage);
-                    Title = "Black Desert Company " + "- Total CPU Usage: " + cpuUsageInt + "%";
-                    Thread.Sleep(500);
-                }
-            });
+            this.cpuThreadActive = true;
+            var th = new Thread(
+                () =>
+                    {
+                        while (this.cpuThreadActive)
+                        {
+                            var cpuUsageInt = Convert.ToInt32(CurrentCpUusage);
+                            this.Title = "Black Desert Company " + "- Total CPU Usage: " + cpuUsageInt + "%";
+                            Thread.Sleep(500);
+                        }
+                    });
 
             th.Start();
         }
 
-        public Task OnLoadedAsync()
+        /// <summary>
+        ///    Gets the current CPU usage.
+        /// </summary>
+        public static float CurrentCpUusage => cpuCounter.NextValue();
+
+        /// <summary>
+        ///     Gets the flyouts.
+        /// </summary>
+        public IFlyoutManager Flyouts { get; }
+
+        /// <summary>
+        ///     Gets the show sample dialog command.
+        /// </summary>
+        public ICommand ShowSampleDialogCommand { get; }
+
+        /// <summary>
+        ///     Gets the show sample flyout command.
+        /// </summary>
+        public ICommand ShowSampleFlyoutCommand { get; }
+
+        /// <summary>
+        ///     Gets or sets the title.
+        /// </summary>
+        public string Title
         {
-            Title = "Black Desert Company - Total CPU Usage: ??%";
- 
-            return Task.FromResult(0);
+            get => this.title;
+            set
+            {
+                if (this.title == value)
+                {
+                    return;
+                }
+
+                this.title = value;
+                this.NotifyOfPropertyChange(() => this.Title);
+            }
         }
 
+        /// <inheritdoc />
+        /// <summary>
+        ///     The on closing.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="T:System.Boolean" />.
+        /// </returns>
         public bool OnClosing()
         {
-            var mySettings = new MetroDialogSettings()
-            {
-                AffirmativeButtonText = "Quit",
-                NegativeButtonText = "Cancel",
-                AnimateShow = true,
-                AnimateHide = false
-            };
+            var mySettings = new MetroDialogSettings
+                                 {
+                                     AffirmativeButtonText = "Quit",
+                                     NegativeButtonText = "Cancel",
+                                     AnimateShow = true,
+                                     AnimateHide = false
+                                 };
 
-            _dialogManager.ShowMessageBox("Quit application?",
-                    "Sure you want to quit application?",
-                    MessageDialogStyle.AffirmativeAndNegative, mySettings)
-                .ContinueWith(t =>
-                {
-                    if (t.Result == MessageDialogResult.Affirmative)
+            this.dialogManager.ShowMessageBox(
+                "Quit application?",
+                "Sure you want to quit application?",
+                MessageDialogStyle.AffirmativeAndNegative,
+                mySettings).ContinueWith(
+                t =>
                     {
-                        _cpuThreadActive = false;
-                        Application.Current.Shutdown();
-                    }
-                }, TaskScheduler.FromCurrentSynchronizationContext());
+                        if (t.Result == MessageDialogResult.Affirmative)
+                        {
+                            this.cpuThreadActive = false;
+                            Application.Current.Shutdown();
+                        }
+                    },
+                TaskScheduler.FromCurrentSynchronizationContext());
             return true;
         }
 
-        public string Title
+        /// <inheritdoc />
+        /// <summary>
+        ///     The on loaded async.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="T:System.Threading.Tasks.Task" />.
+        /// </returns>
+        public Task OnLoadedAsync()
         {
-            get => _title;
-            set
-            {
-                if (_title == value) return;
-                _title = value;
-                NotifyOfPropertyChange(() => Title);
-            }
+            this.Title = "Black Desert Company - Total CPU Usage: ??%";
+
+            return Task.FromResult(0);
         }
 
-        public static float CurrentCpUusage => _cpuCounter.NextValue();
-        
-        public ICommand ShowSampleDialogCommand { get; }
-
-        public ICommand ShowSampleFlyoutCommand { get; }
-
-        public IFlyoutManager Flyouts { get; }
-
+        /// <summary>
+        ///     The on show sample dialog async.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="Task" />.
+        /// </returns>
         private async Task OnShowSampleDialogAsync()
         {
-            var text = await _dialogManager.ShowDialogAsync<SampleDialogViewModel, string>();
+            var text = await this.dialogManager.ShowDialogAsync<SampleDialogViewModel, string>();
             if (text != null)
             {
-                await _dialogManager.ShowMessageBox(Title, "You entered: " + text);
+                await this.dialogManager.ShowMessageBox(this.Title, "You entered: " + text);
             }
         }
 
+        /// <summary>
+        ///     The on show sample flyout async.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="Task" />.
+        /// </returns>
         private Task OnShowSampleFlyoutAsync()
         {
-            return Flyouts.ShowFlyout<SettingsFlyoutViewModel>();
+            return this.Flyouts.ShowFlyout<SettingsFlyoutViewModel>();
         }
-
     }
 }

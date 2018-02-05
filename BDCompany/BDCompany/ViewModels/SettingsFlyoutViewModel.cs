@@ -1,96 +1,128 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using MahApps.Metro;
-using MahApps.Metro.Controls;
-using TinyLittleMvvm;
-
+﻿
 namespace BDCompany.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+
+    using BDCompany.Models;
+    using BDCompany.Properties;
+
+    using MahApps.Metro;
+
+    using TinyLittleMvvm;
+
+    /// <summary>
+    ///     The settings flyout view model.
+    /// </summary>
     public class SettingsFlyoutViewModel : DialogViewModel
     {
+        /// <summary>
+        ///     The _current accent color.
+        /// </summary>
+        private AccentColorMenuData currentAccentColor;
 
-        private AccentColorMenuData _currentAccentColor;
-
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SettingsFlyoutViewModel" /> class.
+        /// </summary>
         public SettingsFlyoutViewModel()
         {
-            AccentColors = ThemeManager.Accents
-                .Select(a => new AccentColorMenuData
-                {
-                    Name = a.Name,
-                    ColorBrush = a.Resources["AccentColorBrush"] as Brush
-                })
+            this.AccentColors = ThemeManager.Accents.Select(
+                    a => new AccentColorMenuData
+ {
+                                                     Name = a.Name,
+                                                     ColorBrush = a.Resources["AccentColorBrush"] as Brush
+                                                 })
                 .ToList();
             var theme = ThemeManager.DetectAppStyle(Application.Current);
-            _currentAccentColor = AccentColors.Single(accent => accent.Name == theme.Item2.Name);
+            this.currentAccentColor = this.AccentColors.Single(accent => accent.Name == theme.Item2.Name);
 
-            OkCommand = new RelayCommand(OnOk, () => !HasErrors);
-            CancelCommand = new RelayCommand(Close);
-            DarkModeCommand = new RelayCommand(OnDarkMode);
-            LightModeCommand = new RelayCommand(OnLightMode);
+            this.OkCommand = new RelayCommand(this.OnOk, () => !this.HasErrors);
+            this.CancelCommand = new RelayCommand(this.Close);
+            this.DarkModeCommand = new RelayCommand(this.OnDarkMode);
+            this.LightModeCommand = new RelayCommand(this.OnLightMode);
         }
 
+        /// <summary>
+        ///     Gets the accent colors.
+        /// </summary>
         public List<AccentColorMenuData> AccentColors { get; }
 
+        /// <summary>
+        ///     Gets the cancel command.
+        /// </summary>
+        public ICommand CancelCommand { get; }
+
+        /// <summary>
+        ///     Gets or sets the current accent color.
+        /// </summary>
         public AccentColorMenuData CurrentAccentColor
         {
-            get { return _currentAccentColor; }
+            get => this.currentAccentColor;
             set
             {
-                if (_currentAccentColor != value)
+                if (this.currentAccentColor != value)
                 {
-                    _currentAccentColor = value;
+                    this.currentAccentColor = value;
                     var theme = ThemeManager.DetectAppStyle(Application.Current);
-                    var accent = ThemeManager.GetAccent(_currentAccentColor.Name);
+                    var accent = ThemeManager.GetAccent(this.currentAccentColor.Name);
                     ThemeManager.ChangeAppStyle(Application.Current, accent, theme.Item1);
                 }
             }
         }
 
-        public ICommand LightModeCommand { get; }
-
+        /// <summary>
+        ///     Gets the dark mode command.
+        /// </summary>
         public ICommand DarkModeCommand { get; }
 
+        /// <summary>
+        ///     Gets the light mode command.
+        /// </summary>
+        public ICommand LightModeCommand { get; }
+
+        /// <summary>
+        ///     Gets the ok command.
+        /// </summary>
         public ICommand OkCommand { get; }
 
-        public ICommand CancelCommand { get; }
-
-        private void OnOk()
-        {
-            Close();
-            Properties.Settings.Default.Save();
-        }
-
+        /// <summary>
+        ///     The on dark mode.
+        /// </summary>
         private void OnDarkMode()
         {
-            if (Properties.Settings.Default.DarkLightSwitch == true)
+            if (Settings.Default.DarkLightSwitch)
             {
                 var theme = ThemeManager.DetectAppStyle(Application.Current);
                 ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseDark"));
             }
 
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
         }
 
+        /// <summary>
+        ///     The on light mode.
+        /// </summary>
         private void OnLightMode()
         {
-            if (Properties.Settings.Default.DarkLightSwitch == false)
+            if (Settings.Default.DarkLightSwitch == false)
             {
                 var theme = ThemeManager.DetectAppStyle(Application.Current);
                 ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseLight"));
             }
 
-
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
         }
-    }
 
-    public class AccentColorMenuData
-    {
-        public string Name { get; set; }
-        public Brush ColorBrush { get; set; }
+        /// <summary>
+        ///     The on ok.
+        /// </summary>
+        private void OnOk()
+        {
+            this.Close();
+            Settings.Default.Save();
+        }
     }
 }

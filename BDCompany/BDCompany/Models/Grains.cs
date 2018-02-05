@@ -1,37 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BDCompany.ViewModels;
-
+﻿
 namespace BDCompany.Models
 {
-    public class GrainTypes
+    using System.Collections.ObjectModel;
+    using System.Linq;
+
+    using BDCompany.ViewModels;
+
+    /// <summary>
+    ///     The tier types.
+    /// </summary>
+    public class TierTypes
     {
-        public ObservableCollection<GrainTypesItemViewModel> Grains { get; set; }
-        public GrainTypesItemViewModel Selected { get; set; }
-        public GrainTypes()
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TierTypes" /> class.
+        /// </summary>
+        public TierTypes()
         {
-            Grains = new ObservableCollection<GrainTypesItemViewModel>();
+            this.Tiers = new ObservableCollection<TierTypesItemViewModel>();
 
-            var grain1 = new GrainTypesItemViewModel() { Name = "Grain 1" };
-            var grain2 = new GrainTypesItemViewModel() { Name = "Grain 2" };
-            var grain3 = new GrainTypesItemViewModel() { Name = "Grain 3" };
-            var grain4 = new GrainTypesItemViewModel() { Name = "Grain 4" };
+            var tier1 = new TierTypesItemViewModel { Name = "Tier 1" };
+            var tier2 = new TierTypesItemViewModel { Name = "Tier 2" };
+            var tier3 = new TierTypesItemViewModel { Name = "Tier 3" };
+            var tier4 = new TierTypesItemViewModel { Name = "Tier 4" };
 
-            Grains.Add(grain1);
-            Grains.Add(grain2);
-            Grains.Add(grain3);
-            Grains.Add(grain4);
+            this.Tiers.Add(tier1);
+            this.Tiers.Add(tier2);
+            this.Tiers.Add(tier3);
+            this.Tiers.Add(tier4);
 
-            this.Selected = grain3;
+            this.Selected = tier3;
         }
 
+        /// <summary>
+        ///     Gets or sets the selected.
+        /// </summary>
+        public TierTypesItemViewModel Selected { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the tiers.
+        /// </summary>
+        public ObservableCollection<TierTypesItemViewModel> Tiers { get; set; }
+
+        /// <summary>
+        /// The select by name.
+        /// </summary>
+        /// <param name="p">
+        /// The p.
+        /// </param>
         internal void SelectByName(string p)
         {
-            this.Selected = this.Grains.FirstOrDefault(s => s.Name.Equals(p));
+            this.Selected = this.Tiers.FirstOrDefault(s => s.Name.Equals(p));
         }
     }
 }

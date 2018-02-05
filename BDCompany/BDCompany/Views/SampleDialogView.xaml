@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="1000*" MaxWidth="200" />
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -24,18 +24,17 @@
         <Label
             Grid.Row="0" Grid.Column="0"
             Content="_Enter text:"
-            Margin="0 4"/>
+            Margin="0 4" />
         <TextBox
             Grid.Row="0" Grid.Column="1"
             Text="{Binding Text}"
-            Margin="0 5"/>
+            Margin="0 5" />
 
         <StackPanel
             Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
             Orientation="Horizontal" HorizontalAlignment="Right"
             Margin="0 5 0 10">
-            <Button Command="{Binding OkCommand}" Content="OK" Margin="0 0 10 0" Width="100" IsDefault="True"/>
+            <Button Command="{Binding OkCommand}" Content="OK" Margin="0 0 10 0" Width="100" IsDefault="True" />
         </StackPanel>
-
     </Grid>
 </Dialogs:BaseMetroDialog>

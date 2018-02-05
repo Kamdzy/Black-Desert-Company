@@ -104,15 +104,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\AccentColorMenuData.cs" />
     <Compile Include="Models\Grains.cs" />
     <Compile Include="Modulars\CustomHamburgerMenuIconItem.cs" />
     <Compile Include="ViewModels\BeerCalculatorViewModel.cs" />
-    <Compile Include="ViewModels\GrainTypesItemViewModel.cs" />
+    <Compile Include="ViewModels\TierTypesItemViewModel.cs" />
     <Compile Include="ViewModels\SettingsFlyoutViewModel.cs" />
     <Compile Include="ViewModels\SampleDialogViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

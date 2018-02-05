@@ -1,22 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MahApps.Metro.Controls;
-
+﻿
 namespace BDCompany.Views
 {
+    using MahApps.Metro.Controls;
+
+    /// <summary>
+    /// The main view.
+    /// </summary>
     public partial class MainView
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainView"/> class.
+        /// </summary>
         public MainView()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// The hamburger menu control_ on item invoked.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
         {
-            HamburgerMenuControl.Content = e.InvokedItem;
+            this.HamburgerMenuControl.Content = e.InvokedItem;
         }
     }
 }

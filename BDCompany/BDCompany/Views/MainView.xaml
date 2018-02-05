@@ -13,6 +13,7 @@
                       xmlns:viewModels="clr-namespace:BDCompany.ViewModels"
                       xmlns:local="clr-namespace:BDCompany"
                       xmlns:views="clr-namespace:BDCompany.Views"
+                      xmlns:modulars="clr-namespace:BDCompany.Modulars"
                       Title="{Binding Title}" Height="720" Width="1280"
                       d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
                       GlowBrush="{DynamicResource AccentColorBrush}"
@@ -169,13 +170,12 @@
                 <Setter Property="PaneForeground" Value="{DynamicResource TextBrush}" />
                 <Setter Property="ShowSelectionIndicator" Value="True" />
             </Style>
-
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
         <Grid.Resources>
-            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type local:CustomHamburgerMenuIconItem}">
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type modulars:CustomHamburgerMenuIconItem}">
                 <Grid x:Name="RootGrid"
                       Height="48"
                       Background="Transparent">
@@ -202,7 +202,6 @@
                     </DataTrigger>
                 </DataTemplate.Triggers>
             </DataTemplate>
-
         </Grid.Resources>
 
         <Border BorderBrush="{DynamicResource AccentBaseColorBrush}"
@@ -233,7 +232,7 @@
                                                         Label="BDOPlanner" ToolTip="BDOPlanner">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
@@ -253,22 +252,13 @@
                 <controls:HamburgerMenu.OptionsItemsSource>
                     <controls:HamburgerMenuItemCollection>
                         <controls:HamburgerMenuIconItem Icon="{iconPacks:Octicons Kind=Settings}" Label="Settings"
-                                                        ToolTip="Settings" Command="{Binding ShowSampleFlyoutCommand}">
-                            <controls:HamburgerMenuIconItem.Tag>
-                                <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <Grid>
-                                        <tinyLittleMvvm:ViewModelPresenter
-                                            ViewModel="{Binding ShowSampleFlyoutCommand}" />
-                                    </Grid>
-                                </Border>
-                            </controls:HamburgerMenuIconItem.Tag>
-                        </controls:HamburgerMenuIconItem>
+                                                        ToolTip="Settings" Command="{Binding ShowSampleFlyoutCommand}" />
                         <controls:HamburgerMenuIconItem Icon="{iconPacks:Material Kind=InformationVariant}"
                                                         Label="About"
                                                         ToolTip="About">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
@@ -291,10 +281,7 @@
                         </Grid>
                     </DataTemplate>
                 </controls:HamburgerMenu.ContentTemplate>
-
             </controls:HamburgerMenu>
-
         </Border>
     </Grid>
-
 </controls:MetroWindow>

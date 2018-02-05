@@ -1,21 +1,31 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using MahApps.Metro.Controls;
-
-namespace BDCompany
+﻿
+namespace BDCompany.Modulars
 {
+    using System.Windows;
+
+    using MahApps.Metro.Controls;
+
+    /// <summary>
+    /// The custom hamburger menu icon item.
+    /// </summary>
     public class CustomHamburgerMenuIconItem : HamburgerMenuIconItem
     {
-        public new static readonly DependencyProperty ToolTipProperty
-            = DependencyProperty.Register("ToolTip",
-                typeof(object),
-                typeof(CustomHamburgerMenuIconItem),
-                new PropertyMetadata(null));
+        /// <summary>
+        /// The tool tip property.
+        /// </summary>
+        public static new readonly DependencyProperty ToolTipProperty = DependencyProperty.Register(
+            "ToolTip",
+            typeof(object),
+            typeof(CustomHamburgerMenuIconItem),
+            new PropertyMetadata(null));
 
+        /// <summary>
+        /// Gets or sets the tool tip.
+        /// </summary>
         public new object ToolTip
         {
-            get { return (object)GetValue(ToolTipProperty); }
-            set { SetValue(ToolTipProperty, value); }
+            get => this.GetValue(ToolTipProperty);
+            set => this.SetValue(ToolTipProperty, value);
         }
     }
 }

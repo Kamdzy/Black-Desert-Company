@@ -1,57 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using TinyLittleMvvm;
-
+﻿
 namespace BDCompany.ViewModels
 {
+    using System.Windows.Input;
+
+    using TinyLittleMvvm;
+
+    /// <summary>
+    ///     The sample dialog view model.
+    /// </summary>
     public class SampleDialogViewModel : DialogViewModel<string>
     {
-        private string _text;
+        /// <summary>
+        ///     The _text.
+        /// </summary>
+        private string text;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SampleDialogViewModel" /> class.
+        /// </summary>
         public SampleDialogViewModel()
         {
-            OkCommand = new RelayCommand(OnOk, CanOk);
-            CancelCommand = new RelayCommand(OnCancel);
-            _text = String.Empty;
+            this.OkCommand = new RelayCommand(this.OnOk, this.CanOk);
+            this.CancelCommand = new RelayCommand(this.OnCancel);
+            this.text = string.Empty;
 
-            AddValidationRule(() => Text, text => !String.IsNullOrEmpty(text), "Text must not be empty");
+            this.AddValidationRule(() => this.Text, text => !string.IsNullOrEmpty(text), "Text must not be empty");
         }
 
+        /// <summary>
+        ///     Gets the cancel command.
+        /// </summary>
+        public ICommand CancelCommand { get; }
+
+        /// <summary>
+        ///     Gets the ok command.
+        /// </summary>
+        public ICommand OkCommand { get; }
+
+        /// <summary>
+        ///     Gets or sets the text.
+        /// </summary>
         public string Text
         {
-            get { return _text; }
+            get => this.text;
             set
             {
-                if (_text != value)
+                if (this.text == value)
                 {
-                    _text = value;
-                    ValidateAllRules();
-                    NotifyOfPropertyChange(() => Text);
+                    return;
                 }
+
+                this.text = value;
+                this.ValidateAllRules();
+                this.NotifyOfPropertyChange(() => this.Text);
             }
         }
 
-        public ICommand OkCommand { get; }
-
-        public ICommand CancelCommand { get; }
-
+        /// <summary>
+        ///     The can ok.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="bool" />.
+        /// </returns>
         private bool CanOk()
         {
-            return !HasErrors;
+            return !this.HasErrors;
         }
 
-        private void OnOk()
-        {
-            Close(Text);
-        }
-
+        /// <summary>
+        ///     The on cancel.
+        /// </summary>
         private void OnCancel()
         {
-            Close(null);
+            this.Close(null);
+        }
+
+        /// <summary>
+        ///     The on ok.
+        /// </summary>
+        private void OnOk()
+        {
+            this.Close(this.Text);
         }
     }
 }

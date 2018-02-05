@@ -1,14 +1,15 @@
 ﻿<controls:Flyout
-  x:Class="BDCompany.Views.SettingsFlyoutView"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:viewModels="clr-namespace:BDCompany.ViewModels"
-  xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-  mc:Ignorable="d"
-  Header="Settings"
-  d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance viewModels:SettingsFlyoutViewModel}" CloseButtonVisibility="Hidden">
+    x:Class="BDCompany.Views.SettingsFlyoutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:viewModels="clr-namespace:BDCompany.ViewModels"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    mc:Ignorable="d"
+    Header="Settings"
+    d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance viewModels:SettingsFlyoutViewModel}"
+    CloseButtonVisibility="Hidden">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -26,11 +27,12 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-           <Label
+            <Label
                 Grid.Column="0" Grid.Row="0"
                 Content="_Color schema:"
-                Margin="0 3"/>
-            <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding AccentColors}" SelectedItem="{Binding CurrentAccentColor}" Margin="0 3">
+                Margin="0 3" />
+            <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding AccentColors}"
+                      SelectedItem="{Binding CurrentAccentColor}" Margin="0 3">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type viewModels:AccentColorMenuData}">
                         <StackPanel Orientation="Horizontal">
@@ -43,14 +45,14 @@
             <Label
                 Grid.Column="0" Grid.Row="1"
                 Content="Dark Mode:"
-                Margin="0 3" HorizontalContentAlignment="Right"/>
+                Margin="0 3" HorizontalContentAlignment="Right" />
             <controls:ToggleSwitch
-                Grid.Column="1" Grid.Row="1" 
-                x:Name="DarkLightName" 
-                IsChecked="{Binding Source={StaticResource Settings}, Path=Default.DarkLightSwitch, Mode=TwoWay}" 
-                CheckedCommand="{Binding DarkModeCommand}" 
+                Grid.Column="1" Grid.Row="1"
+                x:Name="DarkLightName"
+                IsChecked="{Binding Source={StaticResource Settings}, Path=Default.DarkLightSwitch, Mode=TwoWay}"
+                CheckedCommand="{Binding DarkModeCommand}"
                 UnCheckedCommand="{Binding LightModeCommand}"
-                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" VerticalAlignment="Center"/>
+                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" VerticalAlignment="Center" />
         </Grid>
 
         <StackPanel
@@ -61,12 +63,12 @@
             <Button
                 MinWidth="80"
                 Command="{Binding OkCommand}"
-                Content="OK"/>
+                Content="OK" />
             <Button
                 MinWidth="80"
                 Margin="8 0 0 0"
                 Command="{Binding CancelCommand}"
-                Content="Cancel"/>
+                Content="Cancel" />
         </StackPanel>
     </Grid>
 </controls:Flyout>
