@@ -49,7 +49,7 @@
                   controls:TextBoxHelper.UseFloatingWatermark="True"
                   controls:TextBoxHelper.Watermark="Please select an item..."
                   SelectedIndex="0"
-                  ItemsSource="{Binding List.GrainTypes}" 
+                  ItemsSource="{Binding List.Grains}" 
                   DisplayMemberPath="Name" 
                   SelectedValue="{Binding NodeGrain, Mode=TwoWay}">
 
