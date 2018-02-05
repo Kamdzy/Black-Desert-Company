@@ -14,6 +14,7 @@ namespace BDCompany.ViewModels
 
     using TinyLittleMvvm;
 
+    /// <inheritdoc />
     /// <summary>
     ///     The settings flyout view model.
     /// </summary>
@@ -24,8 +25,9 @@ namespace BDCompany.ViewModels
         /// </summary>
         private AccentColorMenuData currentAccentColor;
 
+        /// <inheritdoc />
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SettingsFlyoutViewModel" /> class.
+        ///     Initializes a new instance of the <see cref="T:BDCompany.ViewModels.SettingsFlyoutViewModel" /> class.
         /// </summary>
         public SettingsFlyoutViewModel()
         {

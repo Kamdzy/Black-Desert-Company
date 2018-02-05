@@ -15,7 +15,6 @@ namespace BDCompany.ViewModels
 
     using TinyLittleMvvm;
 
-    /// <inheritdoc cref="ClassHandlers" />
     /// <summary>
     ///     The main view model.
     /// </summary>
@@ -76,7 +75,7 @@ namespace BDCompany.ViewModels
                     {
                         while (this.cpuThreadActive)
                         {
-                            var cpuUsageInt = Convert.ToInt32(CurrentCpUusage);
+                            var cpuUsageInt = Convert.ToInt32(CurrentCpuUsage);
                             this.Title = "Black Desert Company " + "- Total CPU Usage: " + cpuUsageInt + "%";
                             Thread.Sleep(500);
                         }
@@ -88,7 +87,7 @@ namespace BDCompany.ViewModels
         /// <summary>
         ///    Gets the current CPU usage.
         /// </summary>
-        public static float CurrentCpUusage => cpuCounter.NextValue();
+        public static float CurrentCpuUsage => cpuCounter.NextValue();
 
         /// <summary>
         ///     Gets the flyouts.
