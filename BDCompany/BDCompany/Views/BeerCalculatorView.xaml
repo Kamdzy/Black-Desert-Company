@@ -34,11 +34,11 @@
 
         <Label Content="Beer Calculator" Grid.ColumnSpan="3" FontSize="70" VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
 
         <Label Grid.Row="4" Grid.Column="0" Content="Tier type" FontSize="40" HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
         <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="40"
                   controls:TextBoxHelper.ClearTextButton="False"
                   controls:TextBoxHelper.UseFloatingWatermark="True"
@@ -49,13 +49,13 @@
 
         <Label Grid.Row="5" Grid.Column="0" Content="Grain" FontSize="40" HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+               FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
         <TextBox Grid.Row="5" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                  VerticalAlignment="Center"
                  Text="{Binding Path=GrainAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Foreground="{StaticResource AccentBaseColorBrush}" />
+                 Foreground="{DynamicResource AccentColorBrush}" />
 
-        <Border BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColorBrush}" Grid.Column="2"
+        <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Grid.Column="2"
                 Grid.ColumnSpan="5" Grid.Row="2" Grid.RowSpan="5" Margin="44,10,36,10" />
 
         <Grid Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" Margin="44,10,36,10">
@@ -75,44 +75,44 @@
 
             <Label Grid.Row="0" Grid.Column="1" Content="Amount" FontSize="30" HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
 
             <Label Grid.Row="1" Grid.Column="0" Content="Beers" FontSize="40" HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="1" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=BeerAmount}"
-                     Foreground="{StaticResource AccentBaseColorBrush}" x:Name="GrainsName" />
+                     Foreground="{DynamicResource AccentColorBrush}" x:Name="GrainsName" />
 
             <Label Grid.Row="2" Grid.Column="0" Content="Sugar" FontSize="40" HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="2" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=SugarAmount}"
-                     Foreground="{StaticResource AccentBaseColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" />
 
             <Label Grid.Row="3" Grid.Column="0" Content="Fermenter" FontSize="40" HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="3" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=FermenterAmount}"
-                     Foreground="{StaticResource AccentBaseColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" />
 
             <Label Grid.Row="4" Grid.Column="0" Content="Water" FontSize="40" HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="4" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=WaterAmount}"
-                     Foreground="{StaticResource AccentBaseColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" />
 
             <Label Grid.Row="5" Grid.Column="0" Content="Utensil" FontSize="40" HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{StaticResource AccentBaseColorBrush}" />
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="5" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=UtensilAmount}"
-                     Foreground="{StaticResource AccentBaseColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" />
         </Grid>
     </Grid>
 </UserControl>
