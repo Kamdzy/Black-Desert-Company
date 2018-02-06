@@ -27,7 +27,10 @@ namespace BDCompany.Views
         /// </param>
         private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
         {
-            this.HamburgerMenuControl.Content = e.InvokedItem;
+            if ((e.InvokedItem as HamburgerMenuItem)?.Tag != null)
+            {
+                this.HamburgerMenuControl.Content = e.InvokedItem;
+            }
         }
     }
 }
