@@ -1,4 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BeerCalculatorViewModel.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The beer calculator view model.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace BDCompany.ViewModels
 {
     using System.Diagnostics.CodeAnalysis;
@@ -95,7 +103,7 @@ namespace BDCompany.ViewModels
             get => this.grainAmount;
             set
             {
-                this.grainAmount = value;
+                this.grainAmount = !value.Equals(0) ? value : 0;
                 this.CalculateRequirements();
                 this.NotifyOfPropertyChange(() => this.GrainAmount);
             }
@@ -116,6 +124,7 @@ namespace BDCompany.ViewModels
             {
                 this.nodeTier = value;
                 this.TierTypeName = value.Name;
+                this.CalculateRequirements();
                 this.NotifyOfPropertyChange(() => this.NodeTier);
             }
         }
@@ -175,17 +184,50 @@ namespace BDCompany.ViewModels
         /// <summary>
         ///     The calculate requirements.
         /// </summary>
+        [SuppressMessage(
+            "StyleCop.CSharp.MaintainabilityRules",
+            "SA1407:ArithmeticExpressionsMustDeclarePrecedence",
+            Justification = "Reviewed. Suppression is OK here.")]
         public void CalculateRequirements()
         {
-            const int Sugar = 5;
-            const int Fermenter = 2;
-            const int Water = 6;
+            int sugar;
+            int fermenter;
+            int water;
             const int Utensil = 100;
 
-            this.BeerAmount = this.GrainAmount / 5;
-            this.SugarAmount = Sugar * this.BeerAmount;
-            this.FermenterAmount = Fermenter * this.BeerAmount;
-            this.WaterAmount = Water * this.BeerAmount;
+            switch (this.TierTypeName)
+            {
+                case "Blue":
+                    sugar = 5;
+                    fermenter = 10;
+                    water = 30;
+
+                    this.BeerAmount = this.GrainAmount / 5;
+                    this.SugarAmount = sugar * this.BeerAmount;
+                    this.FermenterAmount = fermenter * this.BeerAmount;
+                    this.WaterAmount = water * this.BeerAmount;
+                    break;
+                case "Green":
+                    sugar = 1;
+                    fermenter = 2;
+                    water = 6;
+
+                    this.BeerAmount = this.GrainAmount / 5;
+                    this.SugarAmount = sugar * this.BeerAmount;
+                    this.FermenterAmount = fermenter * this.BeerAmount;
+                    this.WaterAmount = water * this.BeerAmount;
+                    break;
+                case "Normal":
+                    sugar = 1;
+                    fermenter = 2;
+                    water = 6;
+
+                    this.BeerAmount = this.GrainAmount / 5;
+                    this.SugarAmount = sugar * this.BeerAmount;
+                    this.FermenterAmount = fermenter * this.BeerAmount;
+                    this.WaterAmount = water * this.BeerAmount;
+                    break;
+            }
 
             if (this.BeerAmount % 100 > 0)
             {
@@ -193,6 +235,7 @@ namespace BDCompany.ViewModels
             }
             else
             {
+                // ReSharper disable once PossibleLossOfFraction
                 this.UtensilAmount = this.BeerAmount / Utensil;
             }
         }

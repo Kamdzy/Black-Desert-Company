@@ -106,7 +106,7 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Models\AccentColorMenuData.cs" />
-    <Compile Include="Models\Grains.cs" />
+    <Compile Include="Models\TierTypes.cs" />
     <Compile Include="Modulars\CustomHamburgerMenuIconItem.cs" />
     <Compile Include="ViewModels\BeerCalculatorViewModel.cs" />
     <Compile Include="ViewModels\TierTypesItemViewModel.cs" />
