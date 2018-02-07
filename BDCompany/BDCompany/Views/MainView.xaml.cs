@@ -29,7 +29,7 @@ namespace BDCompany.Views
         {
             if ((e.InvokedItem as HamburgerMenuItem)?.Tag != null)
             {
-                this.HamburgerMenuControl.Content = e.InvokedItem;
+                this.HamburgerMenuControl.SetCurrentValue(ContentProperty, (object)e.InvokedItem);
             }
         }
     }
