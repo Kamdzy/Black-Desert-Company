@@ -10,6 +10,8 @@ namespace BDCompany.ViewModels
 
     using BDCompany.Properties;
 
+    using CefSharp;
+
     using MahApps.Metro;
     using MahApps.Metro.Controls.Dialogs;
 
@@ -51,6 +53,11 @@ namespace BDCompany.ViewModels
         /// </param>
         public MainViewModel(IDialogManager dialogManager, IFlyoutManager flyoutManager)
         {
+            var settings = new CefSettings();
+            settings.BrowserSubprocessPath = @"x86\CefSharp.BrowserSubprocess.exe";
+
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+
             if (Settings.Default.DarkLightSwitch)
             {
                 var theme = ThemeManager.DetectAppStyle(Application.Current);

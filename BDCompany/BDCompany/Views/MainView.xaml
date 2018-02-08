@@ -232,7 +232,7 @@
                                                         Label="BDOPlanner" ToolTip="BDOPlanner">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <Label Content="WIP" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    <views:BDOMapView/>
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
