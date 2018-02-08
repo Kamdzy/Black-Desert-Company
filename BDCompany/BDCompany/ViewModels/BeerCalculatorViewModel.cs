@@ -1,12 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BeerCalculatorViewModel.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The beer calculator view model.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿
 namespace BDCompany.ViewModels
 {
     using System.Diagnostics.CodeAnalysis;
@@ -31,9 +23,19 @@ namespace BDCompany.ViewModels
         private int fermenterAmount;
 
         /// <summary>
+        ///     The fermenter price.
+        /// </summary>
+        private int fermenterPrice;
+
+        /// <summary>
         ///     The grain amount.
         /// </summary>
         private int grainAmount;
+
+        /// <summary>
+        ///     The mixed price.
+        /// </summary>
+        private int mixedPrice;
 
         /// <summary>
         ///     The _node tier.
@@ -46,6 +48,11 @@ namespace BDCompany.ViewModels
         private int sugarAmount;
 
         /// <summary>
+        ///     The sugar price.
+        /// </summary>
+        private int sugarPrice;
+
+        /// <summary>
         ///     The tier type name.
         /// </summary>
         private string tierTypeName;
@@ -56,9 +63,19 @@ namespace BDCompany.ViewModels
         private float utensilAmount;
 
         /// <summary>
+        ///     The utensil price.
+        /// </summary>
+        private int utensilPrice;
+
+        /// <summary>
         ///     The water amount.
         /// </summary>
         private int waterAmount;
+
+        /// <summary>
+        ///     The water price.
+        /// </summary>
+        private int waterPrice;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BeerCalculatorViewModel" /> class.
@@ -96,6 +113,19 @@ namespace BDCompany.ViewModels
         }
 
         /// <summary>
+        ///     Gets or sets the fermenter price.
+        /// </summary>
+        public int FermenterPrice
+        {
+            get => this.fermenterPrice;
+            set
+            {
+                this.fermenterPrice = value;
+                this.NotifyOfPropertyChange(() => this.FermenterPrice);
+            }
+        }
+
+        /// <summary>
         ///     Gets or sets the grain amount.
         /// </summary>
         public int GrainAmount
@@ -113,6 +143,19 @@ namespace BDCompany.ViewModels
         ///     Gets or sets the list.
         /// </summary>
         public TierTypes List { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the water price.
+        /// </summary>
+        public int MixedPrice
+        {
+            get => this.mixedPrice;
+            set
+            {
+                this.mixedPrice = value;
+                this.NotifyOfPropertyChange(() => this.MixedPrice);
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the node tier.
@@ -143,6 +186,19 @@ namespace BDCompany.ViewModels
         }
 
         /// <summary>
+        ///     Gets or sets the sugar price.
+        /// </summary>
+        public int SugarPrice
+        {
+            get => this.sugarPrice;
+            set
+            {
+                this.sugarPrice = value;
+                this.NotifyOfPropertyChange(() => this.SugarPrice);
+            }
+        }
+
+        /// <summary>
         ///     Gets or sets the tier type name.
         /// </summary>
         public string TierTypeName
@@ -169,6 +225,19 @@ namespace BDCompany.ViewModels
         }
 
         /// <summary>
+        ///     Gets or sets the utensil price.
+        /// </summary>
+        public int UtensilPrice
+        {
+            get => this.utensilPrice;
+            set
+            {
+                this.utensilPrice = value;
+                this.NotifyOfPropertyChange(() => this.UtensilPrice);
+            }
+        }
+
+        /// <summary>
         ///     Gets or sets the water amount.
         /// </summary>
         public int WaterAmount
@@ -178,6 +247,19 @@ namespace BDCompany.ViewModels
             {
                 this.waterAmount = value;
                 this.NotifyOfPropertyChange(() => this.WaterAmount);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the water price.
+        /// </summary>
+        public int WaterPrice
+        {
+            get => this.waterPrice;
+            set
+            {
+                this.waterPrice = value;
+                this.NotifyOfPropertyChange(() => this.WaterPrice);
             }
         }
 
@@ -193,6 +275,10 @@ namespace BDCompany.ViewModels
             int sugar;
             int fermenter;
             int water;
+            const int Sugarprice = 20;
+            const int Fermenterprice = 20;
+            const int Waterprice = 30;
+            const int Utensilprice = 1000;
             const int Utensil = 100;
 
             switch (this.TierTypeName)
@@ -207,17 +293,7 @@ namespace BDCompany.ViewModels
                     this.FermenterAmount = fermenter * this.BeerAmount;
                     this.WaterAmount = water * this.BeerAmount;
                     break;
-                case "Green":
-                    sugar = 1;
-                    fermenter = 2;
-                    water = 6;
-
-                    this.BeerAmount = this.GrainAmount / 5;
-                    this.SugarAmount = sugar * this.BeerAmount;
-                    this.FermenterAmount = fermenter * this.BeerAmount;
-                    this.WaterAmount = water * this.BeerAmount;
-                    break;
-                case "Normal":
+                case "Normal/Green":
                     sugar = 1;
                     fermenter = 2;
                     water = 6;
@@ -238,6 +314,12 @@ namespace BDCompany.ViewModels
                 // ReSharper disable once PossibleLossOfFraction
                 this.UtensilAmount = this.BeerAmount / Utensil;
             }
+
+            this.SugarPrice = Sugarprice * this.SugarAmount;
+            this.FermenterPrice = Fermenterprice * this.FermenterAmount;
+            this.WaterPrice = Waterprice * this.WaterAmount;
+            this.UtensilPrice = (int)(Utensilprice * this.UtensilAmount);
+            this.MixedPrice = this.SugarPrice + this.FermenterPrice + this.WaterPrice + this.UtensilPrice;
         }
 
         /// <summary>

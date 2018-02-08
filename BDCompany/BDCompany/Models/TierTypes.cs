@@ -18,15 +18,13 @@ namespace BDCompany.Models
         {
             this.Tiers = new ObservableCollection<TierTypesItemViewModel>();
 
-            var tier1 = new TierTypesItemViewModel { Name = "Normal" };
-            var tier2 = new TierTypesItemViewModel { Name = "Green" };
-            var tier3 = new TierTypesItemViewModel { Name = "Blue" };
+            var tier1 = new TierTypesItemViewModel { Name = "Normal/Green" };
+            var tier2 = new TierTypesItemViewModel { Name = "Blue" };
 
             this.Tiers.Add(tier1);
             this.Tiers.Add(tier2);
-            this.Tiers.Add(tier3);
 
-            this.Selected = tier2;
+            this.Selected = tier1;
         }
 
         /// <summary>

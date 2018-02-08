@@ -25,7 +25,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
@@ -47,7 +47,7 @@
                   DisplayMemberPath="Name"
                   SelectedValue="{Binding NodeTier, Mode=TwoWay}" />
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Grain" FontSize="40" HorizontalAlignment="Right"
+        <Label Grid.Row="5" Grid.Column="0" Content="Grain Amount" FontSize="40" HorizontalAlignment="Right"
                VerticalAlignment="Center"
                FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
         <TextBox Grid.Row="5" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
@@ -56,7 +56,7 @@
                  Foreground="{DynamicResource AccentColorBrush}" />
 
         <Border BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" Grid.Column="2"
-                Grid.ColumnSpan="5" Grid.Row="2" Grid.RowSpan="5" Margin="44,10,36,10" />
+                Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" Margin="44,10,36,10" />
 
         <Grid Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" Margin="44,10,36,10">
             <Grid.RowDefinitions>
@@ -69,50 +69,70 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Label Grid.Row="1" Grid.Column="0" Content="Utensil" FontSize="40" HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Sugar" FontSize="40" HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Fermenter" FontSize="40" HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+            <Label Grid.Row="4" Grid.Column="0" Content="Water" FontSize="40" HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+            <Label Grid.Row="5" Grid.Column="0" Content="Beers" FontSize="40" HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+            
+            
 
             <Label Grid.Row="0" Grid.Column="1" Content="Amount" FontSize="30" HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
-
-            <Label Grid.Row="1" Grid.Column="0" Content="Beers" FontSize="40" HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
             <TextBox Grid.Row="1" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
-                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=BeerAmount}"
-                     Foreground="{DynamicResource AccentColorBrush}" x:Name="GrainsName" />
-
-            <Label Grid.Row="2" Grid.Column="0" Content="Sugar" FontSize="40" HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+                     VerticalAlignment="Center"
+                     Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=UtensilAmount}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
             <TextBox Grid.Row="2" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=SugarAmount}"
-                     Foreground="{DynamicResource AccentColorBrush}" />
-
-            <Label Grid.Row="3" Grid.Column="0" Content="Fermenter" FontSize="40" HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
             <TextBox Grid.Row="3" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
                      Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=FermenterAmount}"
-                     Foreground="{DynamicResource AccentColorBrush}" />
-
-            <Label Grid.Row="4" Grid.Column="0" Content="Water" FontSize="40" HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
             <TextBox Grid.Row="4" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=WaterAmount}"
-                     Foreground="{DynamicResource AccentColorBrush}" />
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=BeerAmount}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
 
-            <Label Grid.Row="5" Grid.Column="0" Content="Utensil" FontSize="40" HorizontalAlignment="Right"
+
+            <Label Grid.Row="0" Grid.Column="2" Content="Price" FontSize="30" HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontFamily="Segoe UI" FontWeight="Bold" Foreground="{DynamicResource AccentColorBrush}" />
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+            <TextBox Grid.Row="1" Grid.Column="2" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
                      VerticalAlignment="Center"
-                     Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=UtensilAmount}"
-                     Foreground="{DynamicResource AccentColorBrush}" />
+                     Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=UtensilPrice}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
+            <TextBox Grid.Row="2" Grid.Column="2" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=SugarPrice}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" />
+            <TextBox Grid.Row="3" Grid.Column="2" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=FermenterPrice}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True"/>
+            <TextBox Grid.Row="4" Grid.Column="2" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=WaterPrice}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False"/>
+            <TextBox Grid.Row="5" Grid.Column="2" Margin="10" FontSize="30" HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=MixedPrice}"
+                     Foreground="{DynamicResource AccentColorBrush}" IsReadOnly="True" Focusable="False" 
+                     controls:TextBoxHelper.UseFloatingWatermark="True"
+                     controls:TextBoxHelper.Watermark="Cost of all prices together"/>
         </Grid>
     </Grid>
 </UserControl>
