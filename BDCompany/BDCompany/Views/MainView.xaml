@@ -224,7 +224,7 @@
                         <controls:HamburgerMenuIconItem Icon="{iconPacks:Entypo Kind=News}" Label="News" ToolTip="News">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <views:BeerCalculatorView />
+                                    <views:OfficialNewsView />
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
@@ -249,7 +249,7 @@
                                                         Label="Map" ToolTip="View the map">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <views:BDOMapView/>
+                                    <views:FammesMapView/>
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>

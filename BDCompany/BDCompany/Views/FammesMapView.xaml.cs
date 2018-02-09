@@ -18,9 +18,9 @@ namespace BDCompany.Views
     /// <summary>
     /// Interaction logic for BDOPlanner.xaml
     /// </summary>
-    public partial class BDOMapView : UserControl
+    public partial class FammesMapView : UserControl
     {
-        public BDOMapView()
+        public FammesMapView()
         {
             InitializeComponent();
         }
