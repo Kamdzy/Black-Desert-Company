@@ -228,20 +228,28 @@
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>
-                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Paper}"
-                                                        Label="BDOPlanner" ToolTip="BDOPlanner">
-                            <controls:HamburgerMenuIconItem.Tag>
-                                <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
-                                    <views:BDOMapView/>
-                                </Border>
-                            </controls:HamburgerMenuIconItem.Tag>
-                        </controls:HamburgerMenuIconItem>
                         <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Beer}"
                                                         Label="Beer Calculator" ToolTip="Beer Calculator">
                             <controls:HamburgerMenuIconItem.Tag>
                                 <Border BorderThickness="1,1,0,0"
                                         BorderBrush="{DynamicResource AccentBaseColorBrush}">
                                     <views:BeerCalculatorView />
+                                </Border>
+                            </controls:HamburgerMenuIconItem.Tag>
+                        </controls:HamburgerMenuIconItem>
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Paper}"
+                                                        Label="BDOPlanner" ToolTip="BDOPlanner">
+                            <controls:HamburgerMenuIconItem.Tag>
+                                <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
+                                    <views:BDOPlannerView/>
+                                </Border>
+                            </controls:HamburgerMenuIconItem.Tag>
+                        </controls:HamburgerMenuIconItem>
+                        <controls:HamburgerMenuIconItem Icon="{iconPacks:Modern Kind=Map}"
+                                                        Label="Map" ToolTip="View the map">
+                            <controls:HamburgerMenuIconItem.Tag>
+                                <Border BorderThickness="1,1,0,0" BorderBrush="{DynamicResource AccentBaseColorBrush}">
+                                    <views:BDOMapView/>
                                 </Border>
                             </controls:HamburgerMenuIconItem.Tag>
                         </controls:HamburgerMenuIconItem>

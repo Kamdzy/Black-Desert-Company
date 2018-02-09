@@ -38,6 +38,9 @@ namespace BDCompany
             builder.RegisterType<BeerCalculatorViewModel>();
             builder.RegisterType<BeerCalculatorView>();
 
+            builder.RegisterType<BDOPlannerView>();
+            builder.RegisterType<BDOMapView>();
+
             builder.RegisterType<SampleDialogView>().InstancePerDependency().AsSelf();
             builder.RegisterType<SampleDialogViewModel>().InstancePerDependency().AsSelf();
 
