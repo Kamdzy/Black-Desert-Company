@@ -119,14 +119,20 @@
     <Compile Include="ViewModels\SettingsFlyoutViewModel.cs" />
     <Compile Include="ViewModels\SampleDialogViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\BDOMapView.xaml.cs">
-      <DependentUpon>BDOMapView.xaml</DependentUpon>
+    <Compile Include="Views\BDOPlannerView.xaml.cs">
+      <DependentUpon>BDOPlannerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BeerCalculatorView.xaml.cs">
       <DependentUpon>BeerCalculatorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FammesMapView.xaml.cs">
+      <DependentUpon>FammesMapView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OfficialNewsView.xaml.cs">
+      <DependentUpon>OfficialNewsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -159,13 +165,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\BDOMapView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\BDOPlannerView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BeerCalculatorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FammesMapView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OfficialNewsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SettingsFlyoutView.xaml">
       <Generator>MSBuild:Compile</Generator>
