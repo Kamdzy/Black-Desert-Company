@@ -13,7 +13,7 @@
                       xmlns:viewModels="clr-namespace:BDCompany.ViewModels"
                       xmlns:local="clr-namespace:BDCompany"
                       xmlns:views="clr-namespace:BDCompany.Views"
-                      xmlns:modulars="clr-namespace:BDCompany.Modulars"
+                      xmlns:customControls="clr-namespace:BDCompany.CustomControls"
                       Title="{Binding Title}" Height="720" Width="1280"
                       d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
                       GlowBrush="{DynamicResource AccentColorBrush}"
@@ -175,7 +175,7 @@
 
     <Grid>
         <Grid.Resources>
-            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type modulars:CustomHamburgerMenuIconItem}">
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type customControls:CustomHamburgerMenuIconItem}">
                 <Grid x:Name="RootGrid"
                       Height="48"
                       Background="Transparent">

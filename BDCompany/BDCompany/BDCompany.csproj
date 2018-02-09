@@ -68,6 +68,9 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.0.345, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.0-alpha0345\lib\net45\MahApps.Metro.dll</HintPath>
+	</Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>D:\Projects\Repos\MahApps.Metro\src\MahApps.Metro\MahApps.Metro\obj\Release\NET45\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -113,8 +116,9 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Models\AccentColorMenuData.cs" />
     <Compile Include="Models\TierTypes.cs" />
-    <Compile Include="Modulars\CustomHamburgerMenuIconItem.cs" />
+    <Compile Include="CustomControls\CustomHamburgerMenuIconItem.cs" />
     <Compile Include="ViewModels\BeerCalculatorViewModel.cs" />
+    <Compile Include="ViewModels\OfficialNewsViewModel.cs" />
     <Compile Include="ViewModels\TierTypesItemViewModel.cs" />
     <Compile Include="ViewModels\SettingsFlyoutViewModel.cs" />
     <Compile Include="ViewModels\SampleDialogViewModel.cs" />

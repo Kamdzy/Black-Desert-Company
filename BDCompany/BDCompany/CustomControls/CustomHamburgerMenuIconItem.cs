@@ -1,5 +1,5 @@
 ﻿
-namespace BDCompany.Modulars
+namespace BDCompany.CustomControls
 {
     using System.Windows;
 

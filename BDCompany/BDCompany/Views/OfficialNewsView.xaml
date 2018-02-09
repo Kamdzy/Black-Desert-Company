@@ -5,9 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BDCompany.Views"
              xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+             xmlns:viewModels="clr-namespace:BDCompany.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:OfficialNewsViewModel}">
+    <UserControl.DataContext>
+        <viewModels:OfficialNewsViewModel />
+    </UserControl.DataContext>
+
     <Grid>
-        <cefSharp:ChromiumWebBrowser Address="https://www.blackdesertonline.com/news/list" />
+        <ListView ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Title}" />
+                        <TextBlock Text="{Binding Path=Link}" Margin="5,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

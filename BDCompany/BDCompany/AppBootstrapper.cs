@@ -38,7 +38,9 @@ namespace BDCompany
             builder.RegisterType<BeerCalculatorViewModel>();
             builder.RegisterType<BeerCalculatorView>();
 
+            builder.RegisterType<OfficialNewsViewModel>();
             builder.RegisterType<OfficialNewsView>();
+
             builder.RegisterType<BDOPlannerView>();
             builder.RegisterType<FammesMapView>();
 
