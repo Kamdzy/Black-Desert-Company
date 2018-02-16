@@ -44,6 +44,9 @@ namespace BDCompany
             builder.RegisterType<BDOPlannerView>();
             builder.RegisterType<FammesMapView>();
 
+            builder.RegisterType<ServerTypesItemViewModel>();
+            builder.RegisterType<TierTypesItemViewModel>();
+
             builder.RegisterType<SampleDialogView>().InstancePerDependency().AsSelf();
             builder.RegisterType<SampleDialogViewModel>().InstancePerDependency().AsSelf();
 

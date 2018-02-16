@@ -25,12 +25,25 @@ namespace BDCompany.ViewModels
         /// </summary>
         private AccentColorMenuData currentAccentColor;
 
+        /// <summary>
+        /// The server type name.
+        /// </summary>
+        private string serverTypeName;
+
+        /// <summary>
+        /// The node server.
+        /// </summary>
+        private ServerTypesItemViewModel nodeServer;
+
         /// <inheritdoc />
         /// <summary>
         ///     Initializes a new instance of the <see cref="T:BDCompany.ViewModels.SettingsFlyoutViewModel" /> class.
         /// </summary>
         public SettingsFlyoutViewModel()
         {
+            this.List = new ServerTypes();
+            this.NodeServer = this.List.Selected;
+
             this.AccentColors = ThemeManager.Accents.Select(
                     a => new AccentColorMenuData
  {
@@ -72,6 +85,39 @@ namespace BDCompany.ViewModels
                     var accent = ThemeManager.GetAccent(this.currentAccentColor.Name);
                     ThemeManager.ChangeAppStyle(Application.Current, accent, theme.Item1);
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the list.
+        /// </summary>
+        public ServerTypes List { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the node server.
+        /// </summary>
+        public ServerTypesItemViewModel NodeServer
+        {
+            get => this.nodeServer;
+            set
+            {
+                this.nodeServer = value;
+                this.ServerTypeName = value.Name;
+                this.ChangeServer();
+                this.NotifyOfPropertyChange(() => this.NodeServer);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the tier type name.
+        /// </summary>
+        public string ServerTypeName
+        {
+            get => this.serverTypeName;
+            set
+            {
+                this.serverTypeName = value;
+                this.NotifyOfPropertyChange(() => this.ServerTypeName);
             }
         }
 
@@ -119,12 +165,44 @@ namespace BDCompany.ViewModels
         }
 
         /// <summary>
+        /// The change server.
+        /// </summary>
+        private void ChangeServer()
+        {
+            switch (this.ServerTypeName)
+            {
+                case "EU":
+                    Settings.Default.ServerType = true;
+                    Settings.Default.Save();
+                    break;
+                case "NA":
+                    Settings.Default.ServerType = false;
+                    Settings.Default.Save();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         ///     The on ok.
         /// </summary>
         private void OnOk()
         {
             this.Close();
             Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// The select server.
+        /// </summary>
+        /// <param name="p">
+        /// The p.
+        /// </param>
+        internal void SelectServer(string p)
+        {
+            this.List.SelectByName(p);
+            this.NodeServer = this.List.Selected;
         }
     }
 }

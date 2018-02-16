@@ -25,7 +25,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label
@@ -43,17 +43,39 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+
             <Label
                 Grid.Column="0" Grid.Row="1"
+                Content="Server:"
+                Margin="0 3"
+                HorizontalAlignment="Right"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="0 3"
+                      ItemsSource="{Binding List.Servers}"
+                      DisplayMemberPath="Name"
+                      SelectedValue="{Binding NodeServer, Mode=TwoWay}" />
+
+            <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding List.Servers}"
+                      SelectedItem="{Binding NodeServer}" Margin="0 3">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:ServerTypes}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Servers}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label
+                Grid.Column="0" Grid.Row="2"
                 Content="Dark Mode:"
                 Margin="0 3" HorizontalContentAlignment="Right" />
-            <controls:ToggleSwitch
-                Grid.Column="1" Grid.Row="1"
+            <!--<controls:ToggleSwitch
+                Grid.Column="1" Grid.Row="2"
                 x:Name="DarkLightName"
                 IsChecked="{Binding Source={StaticResource Settings}, Path=Default.DarkLightSwitch, Mode=TwoWay}"
                 CheckedCommand="{Binding DarkModeCommand}"
                 UnCheckedCommand="{Binding LightModeCommand}"
-                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" VerticalAlignment="Center" />
+                Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" VerticalAlignment="Center" />-->
         </Grid>
 
         <StackPanel
